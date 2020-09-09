@@ -14,6 +14,68 @@
     <script src="scripts/index.js"></script>
   </head>
   <body>
-    <h1>Wether Appw</h1>
+    <main class="mars-current-weather">
+      <h1 class="main-title">Latest weather t Elysium Plantetia</h1>
+      <div class="date">
+        <h2 class="section-title section-title-date">Sol 377</h2>
+        <p class="date__day">December 18</p>
+      </div>
+      <div class="temp"><h2 class="section-title">Temperature</h2></div>
+      <p class="reading">High: -20°C</p>
+      <p class="reading">Low: -160°C</p>
+      <div class="wind">
+        <h2 class="sectio-title">Wind</h2>
+        <p class="reading">75 kph</p>
+        <div class="wind__direction">
+          <p class="sr-only">45deg</p>
+          <div class="wind__arrow"></div>
+        </div>
+      </div>
+
+      <div class="info">
+        <p>
+          InSight is taking daily weather mesurements (tempurature, wind,
+          pressure) on the surface of Mars at Elysium Planitis, a flat, smooth
+          plain near Mars' equator.
+        </p>
+        <p>
+          This is only part of InSights mission.<a href="https://mars.nasa.gov"
+            >Click here</a
+          >
+          to find out more.
+        </p>
+      </div>
+
+      <div class="unit">
+        <label for="cel">°C</label>
+        <input type="radio" id="cel" name="unit" checked />
+        <button class="unit__toggle"></button>
+        <label for="fah">°F</label>
+        <input type="radio" id="fah" name="unit" />
+      </div>
+    </main>
+    <div class="previous-weather">
+      <label for="weather-toggle" class="show-previous-wether-lable"
+        >&#8593; <span class="sr-only">Show previous weather</span></label
+      >
+
+      <input
+        type="checkbox"
+        class="show-previous-weather-toggle"
+        id="weather-toggle"
+      />
+
+      <h2 class="main-title">Previous 7 days</h2>
+
+      <div class="previous-dys">
+        <div class="previous-day">
+          <h3 class="previous-day__sol">Sol 371</h3>
+          <p class="previous-day__date">Decemer 17</p>
+          <p class="previous-day__temp">High: -20°C</p>
+          <p class="previous-day__temp">Low: -160°C</p>
+          <button class="previous-day__more-info">More infos</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
