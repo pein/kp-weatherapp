@@ -34,7 +34,8 @@ body {
   background-image: url(../img/mars.jpg);
   background-size: cover;
   color: var(--clr-light);
-  min-height: 100vh; }
+  min-height: 100vh;
+  overflow: hidden; }
 
 h1,
 h2,
@@ -161,3 +162,94 @@ a {
       width: 1rem; }
   .unit :checked ~ .unit__toggle::after {
     margin-left: 3px; }
+
+.previous-weather {
+  background: var(--clr-light);
+  color: var(--clr-dark);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transform: translateY(60%);
+  transition: transform 350ms ease;
+  padding: 3rem; }
+
+.show-previous-weather {
+  position: absolute;
+  background: var(--clr-light);
+  left: 50%;
+  width: 10rem;
+  transform: translate(-50%, calc(-100% - 3rem));
+  text-align: center;
+  font-size: var(--fs-h2);
+  line-height: 1;
+  clip-path: polygon(50% 0, 0 100%, 100% 100%);
+  cursor: pointer;
+  color: var(--clr-gray);
+  border: 0;
+  font-family: inherit; }
+  .show-previous-weather:hover, .show-previous-weather:focus {
+    color: var(--clr-dark); }
+  .show-previous-weather span {
+    display: block;
+    transform: rotate(0);
+    transition: transform 300ms ease; }
+
+.previous-days {
+  display: flex;
+  justify-content: space-between; }
+
+.previous-weather__title {
+  text-align: center; }
+
+.previous-day {
+  opacity: 0; }
+  .previous-day > * {
+    margin: 0; }
+  .previous-day__date {
+    font-size: 0.9rem;
+    color: vat(--clr-gray);
+    margin-top: 0.5em; }
+  .previous-day__more-info {
+    cursor: pointer;
+    border: 0;
+    border-radius: 100vmax;
+    background-color: var(--clr-dark);
+    color: var(--clr-light);
+    text-transform: uppercase;
+    padding: 0.5em 1em;
+    margin-top: 1em; }
+    .previous-day__more-info:hover {
+      background-color: var(--clr-gray); }
+
+.show-weather.previous-weather {
+  transform: translateY(0); }
+  .show-weather.previous-weather .show-previous-weather span {
+    display: block;
+    transform: rotate(-180deg) translateY(-6px); }
+  .show-weather.previous-weather .previous-weather__title,
+  .show-weather.previous-weather .previous-day {
+    animation: slideUpIn 750ms forwards; }
+  .show-weather.previous-weather .previous-weather__title {
+    text-align: left; }
+  .show-weather.previous-weather .previous-day:nth-child(1) {
+    animation-delay: 100ms; }
+  .show-weather.previous-weather .previous-day:nth-child(2) {
+    animation-delay: 125ms; }
+  .show-weather.previous-weather .previous-day:nth-child(3) {
+    animation-delay: 150ms; }
+  .show-weather.previous-weather .previous-day:nth-child(4) {
+    animation-delay: 175ms; }
+  .show-weather.previous-weather .previous-day:nth-child(5) {
+    animation-delay: 200ms; }
+  .show-weather.previous-weather .previous-day:nth-child(6) {
+    animation-delay: 225ms; }
+  .show-weather.previous-weather .previous-day:nth-child(7) {
+    animation-delay: 250ms; }
+
+@keyframes slideUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50%); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
