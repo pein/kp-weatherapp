@@ -10,6 +10,18 @@ previousWeatherToggle.addEventListener("click", () => {
 });
 let selectedSolIndex;
 
+const currrentSolElement = document.querySelector("[data-current-sol]");
+const currentDateElement = document.querySelector("[data-current-date]");
+const currentTempHeighElement = document.querySelector(
+  "[data-current-temp-high]"
+);
+const currentTempLowElement = document.querySelector("[data-current-temp-low]");
+const windSpeedElement = document.querySelector("[data-wind-speed]");
+const windDirectionText = document.querySelector("[date-wind-direction-text]");
+const windDirectionArrow = document.querySelector(
+  "[data-wind-direction-arrow]"
+);
+
 const getWeather = () => {
   return fetch(API_URL)
     .then((res) => res.json())
@@ -27,17 +39,40 @@ const getWeather = () => {
           date: new Date(data.First_UTC),
         };
       });
-
-      console.log(temp);
     });
-};
-
-const displaySelectedSol = (sols) => {
-  return sols[selectedSolIndex];
 };
 
 getWeather().then((sols) => {
   selectedSolIndex = sols.length - 1;
-
-  console.log(displaySelectedSol(sols));
+  displaySelectedSol(sols);
 });
+
+const displayDate = (date) => {
+  return date.toLocaleDateString(undefined, {
+    day: "numeric",
+    month: "long",
+  });
+};
+
+const displayTemperture = (temp) => {
+  return Math.round(temp);
+};
+
+const displaySpeed = (speed) => {
+  return Math.round(speed);
+};
+
+const displaySelectedSol = (sols) => {
+  const selectedSol = sols[selectedSolIndex];
+  console.log(selectedSol);
+  currrentSolElement.innerText = selectedSol.sol;
+  currentDateElement.innerText = displayDate(selectedSol.date);
+  currentTempHeighElement.innerText = displayTemperture(selectedSol.maxTemp);
+  currentTempLowElement.innerText = displayTemperture(selectedSol.minTemp);
+  windSpeedElement.innerText = displaySpeed(selectedSol.windSpeed);
+  windDirectionArrow.style.setProperty(
+    "--direction",
+    `${selectedSol.windDirectionDegrees}deg`
+  );
+  windDirectionText.innerText = selectedSol.windDirectionCardinal;
+};
