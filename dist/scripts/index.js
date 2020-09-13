@@ -130,7 +130,6 @@ const displaySelectedSol = (sols) => {
 };
 
 const updateUnits = () => {
-  console.log("updating units...");
   const speedUnits = document.querySelectorAll("[data-speed-unit]");
   const tempUnits = document.querySelectorAll("[data-temp-unit]");
   speedUnits.forEach((unit) => {
